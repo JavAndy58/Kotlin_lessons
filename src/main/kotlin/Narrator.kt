@@ -15,7 +15,7 @@ inline fun narrate(
 fun changeNarratorMood() {
     val mood: String
     val modifier: (String) -> String
-    when(Random.nextInt(1..4)) {
+    when(Random.nextInt(1..5)) {
         1 -> {
             mood = "load"
             modifier = {message ->
@@ -33,6 +33,14 @@ fun changeNarratorMood() {
             mood = "unsure"
             modifier = {message ->
                 "$message."
+            }
+        }
+        5 -> {
+            var narrationsGiven = 0
+            mood = "like sending an itemized bill"
+            modifier = { message ->
+                narrationsGiven++
+                "$message.\n(I have narrated $narrationsGiven things)"
             }
         }
         else -> {
